@@ -4,7 +4,8 @@
 %defines %union { Base *o; }
 %token <o> ID NUM STR
 %type <o> ex
-%token EQ
+%token EQ EOL
 %%
-REPL : | REPL ID EQ ex	{ vars[$2->val] = $4; }
+REPL : | REPL setvar EOL | REPL EOL
 ex : NUM | STR
+setvar: ID EQ ex	{ vars[$1->val] = $3; }

@@ -22,5 +22,6 @@ N [0-9]+
 
 [a-zA-Z0-9_]+	{ yylval.o = new Str(yytext); return ID; }	// symbol
 
-[ \t\r\n]+	{}						// drop spaces
+[ \t\r]+	{}						// drop spaces
+\n			{return EOL;}			// end of line
 .			{yyerror("lexer");}		// undetected char
