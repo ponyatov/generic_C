@@ -13,10 +13,10 @@ N [0-9]+
 #[^\n]*		{}						// drop comments
 
 '			{BEGIN(str); LexString="";}
-<str>'		{BEGIN(INITIAL); yylval.o = new Str(&LexString); return STR;}
-<str>.		{LexString+=yytext[0];} 
+<str>'		{BEGIN(INITIAL); yylval.o = new Str(LexString); return STR;}
+<str>.		{LexString += yytext[0];} 
 
-\=				{ return EQ; }
+\=			{ return EQ; }
 
 {S}{N}+(.[0-9]*)?([eE]{S}{N})?	{ yylval.o = new Num(atof(yytext)); return NUM; } // number
 

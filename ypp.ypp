@@ -6,6 +6,5 @@
 %type <o> ex
 %token EQ
 %%
-REPL : | REPL ex		{ cout << $2->dump() << endl; }
-ex : ID EQ ex			{ vars[$1->val] = $3; }			// set var
-ex : ID | NUM | STR
+REPL : | REPL ID EQ ex	{ vars[$2->val] = $4; }
+ex : NUM | STR

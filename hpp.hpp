@@ -13,7 +13,7 @@ struct Base {					// must be virtual class
 };
 
 struct Num:Base { Num(double d); double val; string dump(); };
-struct Str:Base { Str(string *s); Str(char*); string *val; string dump(); };
+struct Str:Base { Str(string s); Str(char*); string dump(); };
 
 extern map<string,Base*> vars;
 

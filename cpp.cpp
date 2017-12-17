@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
 	yyparse();
 	// dump variables
 	for (auto it = vars.begin(),e=vars.end(); it!=e; it++)
-		cout << it->first << "=" << it->second << endl;
+		cout << it->first << "=" << it->second->dump() << endl;
 	return 0;
 }
 
@@ -25,7 +25,7 @@ Num::Num(double d) { val = d; }
 string Num::dump() { ostringstream os;
 	os << "<num:" << val << ">"; return os.str(); }
 
-Str::Str(string *s) { val = s; }
-Str::Str(char *c) { val = new string(c); }
+Str::Str(string s) { val = s; }
+Str::Str(char *c) { val = string(c); }
 string Str::dump() { ostringstream os;
-	os << "<str:" << *val << ">"; return os.str(); }
+	os << "<str:" << val << ">"; return os.str(); }
